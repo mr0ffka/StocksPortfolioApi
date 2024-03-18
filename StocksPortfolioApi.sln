@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StocksPortfolio.Infrastruct
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StocksPortfolio.Application", "StocksPortfolio.Application\StocksPortfolio.Application.csproj", "{49642090-C683-454A-ADCA-820DFC37E492}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StocksPortfolio.Domain", "StocksPortfolio.Domain\StocksPortfolio.Domain.csproj", "{D9261340-040A-4594-B55F-C17D1DB0CDD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{49642090-C683-454A-ADCA-820DFC37E492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49642090-C683-454A-ADCA-820DFC37E492}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49642090-C683-454A-ADCA-820DFC37E492}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9261340-040A-4594-B55F-C17D1DB0CDD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9261340-040A-4594-B55F-C17D1DB0CDD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9261340-040A-4594-B55F-C17D1DB0CDD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9261340-040A-4594-B55F-C17D1DB0CDD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
