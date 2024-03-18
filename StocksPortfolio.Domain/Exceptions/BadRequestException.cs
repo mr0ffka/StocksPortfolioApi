@@ -1,8 +1,7 @@
 ﻿
-using FluentValidation.Results;
 using System.Runtime.Serialization;
 
-namespace StocksPortfolio.Application.Exceptions
+namespace StocksPortfolio.Domain.Exceptions
 {
     public class BadRequestException : Exception
     {
@@ -12,12 +11,6 @@ namespace StocksPortfolio.Application.Exceptions
             : base(message)
         {
 
-        }
-
-        public BadRequestException(string message, ValidationResult result)
-            : base(message)
-        {
-            Errors = result.ToDictionary();
         }
 
         public BadRequestException(string message, Exception innerException) : base(message, innerException)

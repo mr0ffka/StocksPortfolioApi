@@ -8,13 +8,6 @@ namespace StocksPortfolio.Controllers
     [Route("api/portfolio/")]
     public class PortfolioController(IPortfolioService portfolioService) : ControllerBase
     {
-        [HttpGet]
-        public async Task<ActionResult<PortfolioDetailsDto>> Get()
-        {
-            var result = await portfolioService.GetAllAsync();
-            return Ok(result);
-        }
-
         [HttpGet("{id:length(24)}")]
         public async Task<ActionResult<PortfolioDetailsDto>> GetById(string id, [FromQuery] string? currency)
         {

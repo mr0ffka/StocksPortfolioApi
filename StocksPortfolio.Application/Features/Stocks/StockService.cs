@@ -1,8 +1,6 @@
-﻿using StocksPortfolio.Application.Exceptions;
-using StocksPortfolio.Application.Features.Stocks.Dtos;
+﻿using StocksPortfolio.Application.Features.Stocks.Dtos;
 using StocksPortfolio.Application.Interfaces.Services;
-using StocksPortfolio.Domain.Entities.Common;
-using StocksPortfolio.Domain.Entities;
+using StocksPortfolio.Domain.Exceptions;
 using StocksService;
 
 namespace StocksPortfolio.Application.Features.Stocks;

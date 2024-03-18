@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using StocksPortfolio.Application.Exceptions;
 using StocksPortfolio.Application.Features.Currencies.Dtos;
 using StocksPortfolio.Application.Integrations.CurrencyApi.Dtos;
 using StocksPortfolio.Application.Interfaces.Integrations;
 using StocksPortfolio.Application.Interfaces.Services;
 using StocksPortfolio.Domain.Entities;
-using StocksPortfolio.Domain.Entities.Common;
+using StocksPortfolio.Domain.Exceptions;
 using StocksPortfolio.Domain.Repositories;
 
 namespace StocksPortfolio.Application.Features.Currencies;

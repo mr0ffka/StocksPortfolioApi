@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using StocksPortfolio.Application.Exceptions;
 using StocksPortfolio.Application.Features.Portfolios.Dtos;
 using StocksPortfolio.Application.Interfaces.Services;
 using StocksPortfolio.Domain.Entities;
+using StocksPortfolio.Domain.Exceptions;
 using StocksPortfolio.Domain.Repositories;
 
 namespace StocksPortfolio.Application.Features.Portfolios;

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace StocksPortfolio.Application.Exceptions
+namespace StocksPortfolio.Domain.Exceptions
 {
     public class NotFoundException : Exception
     {

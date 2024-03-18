@@ -1,6 +1,6 @@
 ﻿
 using FluentValidation;
-using StocksPortfolio.Application.Exceptions;
+using StocksPortfolio.Domain.Exceptions;
 using StocksPortfolio.Models;
 using System.Net;
 using System.Net.Mime;
