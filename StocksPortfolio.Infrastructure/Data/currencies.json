@@ -1,0 +1,30 @@
+{
+  "_id": {
+    "$oid": "50227b375dff7778248eadc4"
+  },
+  "dateCreatedUtc": "2024-03-16T23:23:23",
+  "dateModifiedUtc": "2024-03-16T23:23:23",
+  "baseCurrency": "USD",
+  "currencies": [
+    {
+      "code": "USD",
+      "value": "1"
+    },
+    {
+      "code": "PLN",
+      "value": "1"
+    },
+    {
+      "code": "EUR",
+      "value": "1"
+    },
+    {
+      "code": "JPY",
+      "value": "1"
+    },
+    {
+      "code": "GBP",
+      "value": "1"
+    }
+  ]
+}

@@ -7,10 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire" Version="1.8.11" />
+    <PackageReference Include="Hangfire.Core" Version="1.8.11" />
+    <PackageReference Include="Hangfire.Dashboard.Basic.Authentication" Version="7.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StocksPortfolio.Application\StocksPortfolio.Application.csproj" />
     <ProjectReference Include="..\StocksPortfolio.Infrastructure\StocksPortfolio.Infrastructure.csproj" />
     <ProjectReference Include="..\StocksService\StocksService.csproj" />
   </ItemGroup>

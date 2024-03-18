@@ -2,3 +2,8 @@
 .vscode
 bin/
 obj/
+*.db
+*.db-shm
+*.db-wal
+StocksPortfolio.Api/appsettings.Development.json
+StocksPortfolio.Api/appsettings.Development.json
