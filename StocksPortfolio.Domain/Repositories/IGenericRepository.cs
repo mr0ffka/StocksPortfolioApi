@@ -1,6 +1,8 @@
-﻿namespace StocksPortfolio.Domain.Repositories;
+﻿using StocksPortfolio.Domain.Entities.Common;
 
-public interface IGenericRepository<T> where T : class
+namespace StocksPortfolio.Domain.Repositories;
+
+public interface IGenericRepository<T> where T : IEntity
 {
     Task<IEnumerable<T>> GetAllAsync();
     Task<T> GetByIdAsync(string id);
