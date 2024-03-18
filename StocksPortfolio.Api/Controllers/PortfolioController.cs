@@ -22,10 +22,10 @@ namespace StocksPortfolio.Controllers
             return Ok(result);
         }
 
-        [HttpGet("/values")]
-        public async Task<ActionResult<decimal>> GetValues([FromQuery] string portfolioId, [FromQuery] string currency = "USD")
+        [HttpGet("{id:length(24)}/value")]
+        public async Task<ActionResult<decimal>> GetValues(string id, [FromQuery] string currency = "USD")
         {
-            var result = await portfolioService.GetValueAsync(portfolioId, currency);
+            var result = await portfolioService.GetValueAsync(id, currency);
             return Ok(result);
         }
 

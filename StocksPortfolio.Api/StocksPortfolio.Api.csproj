@@ -16,7 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\StocksPortfolio.Application\StocksPortfolio.Application.csproj" />
     <ProjectReference Include="..\StocksPortfolio.Infrastructure\StocksPortfolio.Infrastructure.csproj" />
-    <ProjectReference Include="..\StocksService\StocksService.csproj" />
   </ItemGroup>
 
 </Project>
