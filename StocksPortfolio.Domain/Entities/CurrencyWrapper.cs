@@ -2,7 +2,7 @@
 
 namespace StocksPortfolio.Domain.Entities;
 
-public class CurrencyWrapper : IEntity
+public class CurrencyWrapper : IEntity, IAccountable
 {
     public required string Id { get; set; }
     public DateTime? DateCreatedUtc { get; set; }

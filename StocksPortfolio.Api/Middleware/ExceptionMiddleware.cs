@@ -1,5 +1,4 @@
 ﻿
-using FluentValidation;
 using StocksPortfolio.Domain.Exceptions;
 using StocksPortfolio.Models;
 using System.Net;
@@ -38,7 +37,6 @@ namespace StocksPortfolio.Middleware
 
             CustomValidationProblemDetails error = ex switch
             {
-                ValidationException validationException => HandleValidationException(validationException, ref statusCode),
                 BadRequestException badRequestException => HandleBadRequestException(badRequestException, ref statusCode),
                 NotFoundException notFoundException => HandleResourceNotFoundException(notFoundException, ref statusCode),
                 _ => HandleUnhandledExceptions(ex, ref statusCode)
@@ -91,26 +89,6 @@ namespace StocksPortfolio.Middleware
                 Detail = badRequestException.InnerException?.Message,
                 Type = nameof(BadRequestException),
                 Errors = badRequestException.Errors
-            };
-
-            return error;
-        }
-
-        private CustomValidationProblemDetails HandleValidationException(ValidationException validationException, ref HttpStatusCode statusCode)
-        {
-            statusCode = HttpStatusCode.BadRequest;
-            var error = new CustomValidationProblemDetails
-            {
-                Title = validationException.Message,
-                Status = (int)statusCode,
-                Detail = validationException.InnerException?.Message,
-                Type = nameof(ValidationException),
-                Errors = validationException.Errors
-                    .GroupBy(x => x.PropertyName)
-                    .ToDictionary(
-                        g => g.Key,
-                        g => g.Select(x => x.ErrorMessage).ToArray()
-                    )
             };
 
             return error;

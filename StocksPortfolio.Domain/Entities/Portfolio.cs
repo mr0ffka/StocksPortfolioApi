@@ -3,7 +3,7 @@ using StocksPortfolio.Domain.Interfaces;
 
 namespace StocksPortfolio.Domain.Entities;
 
-public class Portfolio : IEntity, ISoftDeletable
+public class Portfolio : IEntity, IAccountable, ISoftDeletable
 {
     public required string Id { get; set; }
     public DateTime? DateCreatedUtc { get; set; }
