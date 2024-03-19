@@ -1,0 +1,76 @@
+# Added nuget packages:
+- Hangfire
+- Hangfire.Core
+- Hangfire.Dashboard.Basic.Authentication
+- Hangfire.Storage.SQLite
+- AutoMapper
+- FluetAssertions
+- Moq
+- xunit
+- xunit.runner.visualstudio
+
+# Changes
+- Breaking down the Core layer into Domain and Application
+- Addition of Hangfire to handle background tasks
+- Implementation of Clean Architecture
+- Implementation of Repository Pattern 
+- Adding a new MongoDb collection storing currencies retrieved from an external API
+- Addition of 2 new database entities Currency and CurrencyWrapper 
+- Integration with https://currencyapi.com/ instead of CurrencyLayer
+- StockPortfolio.Api project:
+	- Addition of exception handling middleware along with unification of the error model 
+	- "Slimming down" the controller, moving logic to services in the application layer
+	- CORS Configuration
+	- Storing the apikey in appsettings.json
+	- Registering services in the Dependency Injection container using extensions methods located in the appropriate layers 
+- StockPortfolio.Application project:
+	- Adding an IServiceCollection extension method in which the layer's services are registered
+	- Adding services for each functionality
+	- Adding DTOs for each functionality
+	- Creation of maps using the AutoMapper package
+	- Adding integration models with currencyapi.com
+- StockPortfolio.Domain project:
+	- Database entity models without mongodb attributes, allowing for no references in the domain layer 
+	- Custom exceptions
+	- Addition of IEntity, IAccountable and ISoftDeletable interfaces
+- Infrastructure project:
+	- Recurring jobs registration (hangfire)
+	- Adding an extension method IServiceCollection in which layer services are registered
+	- mapping of models from the domain layer to Bson elements using BsonClassMap.RegisterClassMap 
+	- integration service for https://currencyapi.com/
+	- easy way to access mongodb collections in repositories
+	- repositories containing methods for integrating and performing database operations
+- Unit tests:
+	- Tests of the api (presentation) layer:
+		- Tests to check that the exception middleware works correctly
+			- whether it correctly passes to the next delegate
+			- whether it correctly returns right error code (400, 404, 500)
+	- Application layer tests:
+		- Tests of the mappers 
+		- Test of the method that calculates the total value of a stock action
+
+# Ideas:
+- CQRS implementation. There was no need to implement it now due to small scale 
+- Users / Authentication / Authorisations -> jwt / oauth2 / mfa 
+- More endpoints for portfolios 
+- More endpoints for stocks
+- More filters, e.g.
+	- By value
+	- By creation date
+	- Get deleted
+	- etc.
+- Validators 
+- List paginations
+- Transactions between portfolios/users 
+- Multiple portfolios for one user
+- History for currencies
+- Transaction history
+- Analysis of transactions, stocks, portfolios
+	- by date - how many transactions
+	- by currency
+	- by profit based on currency history
+- Integration with a service providing actual stock share prices
+- more unit/integration tests
+- notifications 
+- Background jobs that buy/sell shares with our requirements that we have set up
+- Description of endpoints in the swagger
