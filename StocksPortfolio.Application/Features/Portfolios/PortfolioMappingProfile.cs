@@ -8,7 +8,9 @@ public class PortfolioMappingProfile : Profile
 {
     public PortfolioMappingProfile()
     {
-        CreateMap<PortfolioCreateDto, Portfolio>();
+        CreateMap<PortfolioCreateDto, Portfolio>()
+            .ForMember(d => d.DateCreatedUtc, o => o.MapFrom(s => DateTime.UtcNow))
+            .ForMember(d => d.DateModifiedUtc, o => o.MapFrom(s => DateTime.UtcNow));
         CreateMap<PortfolioDetailsDto, Portfolio>()
             .ReverseMap();
     }

@@ -10,6 +10,7 @@ namespace StocksPortfolio.Application.Features.Portfolios.Dtos;
 
 public class PortfolioCreateDto
 {
-    public float TotalValue { get; set; }
+    public decimal TotalValue { get; set; }
+    public string BaseCurrency { get; set; }
     public ICollection<StockDto> Stocks { get; set; } = [];
 }

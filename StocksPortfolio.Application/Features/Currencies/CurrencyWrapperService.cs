@@ -53,8 +53,7 @@ public class CurrencyWrapperService(
             {
                 var newEntity = new CurrencyWrapperCreateDto();
                 newEntity.BaseCurrency = request.BaseCurrency;
-                newEntity.DateModifiedUtc = DateTime.UtcNow;
-                newEntity.DateCreatedUtc = DateTime.UtcNow;
+                newEntity.DateModifiedUtc = newEntity.DateCreatedUtc = DateTime.UtcNow;
                 newEntity.Currencies = newEntityValues;
                 var mapped = mapper.Map<CurrencyWrapper>(newEntity);
 

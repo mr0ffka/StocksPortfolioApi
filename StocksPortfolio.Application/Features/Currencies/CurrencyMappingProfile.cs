@@ -9,10 +9,8 @@ public class CurrencyMappingProfile : Profile
 {
     public CurrencyMappingProfile()
     {
-        CreateMap<CurrencyWrapperCreateDto, CurrencyWrapper>()
-            .ReverseMap();
-        CreateMap<CurrencyWrapperDetailsDto, CurrencyWrapper>()
-            .ReverseMap();
+        CreateMap<CurrencyWrapperCreateDto, CurrencyWrapper>();
+        CreateMap<CurrencyWrapper, CurrencyWrapperDetailsDto>();
         CreateMap<CurrencyApiCurrencyModel, Currency>()
             .ReverseMap();
     }

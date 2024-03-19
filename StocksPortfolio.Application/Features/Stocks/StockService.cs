@@ -1,5 +1,6 @@
 ﻿using StocksPortfolio.Application.Features.Stocks.Dtos;
 using StocksPortfolio.Application.Interfaces.Services;
+using StocksPortfolio.Domain.Entities;
 using StocksPortfolio.Domain.Exceptions;
 using StocksService;
 
@@ -13,18 +14,16 @@ public class StockService(
     public async Task<decimal> CalculateStockTotalValue(StockDto stock, string baseCurrency = "USD")
     {
         var priceModel = await stockPriceService.GetStockPrice(stock.Ticker);
-        var priceExchangeRate = await currencyWrapperService.GetByBaseCurrency(priceModel.Currency);
-        var stockCurrencyExchangeRate = await currencyWrapperService.GetByBaseCurrency(stock.Currency);
+        var priceCurrencyDbModel = await currencyWrapperService.GetByBaseCurrency(priceModel.Currency);
 
-        if (!priceExchangeRate.Currencies.Any(c => c.Code == baseCurrency))
-            throw new NotFoundException($"Exchange rate from {priceModel.Currency} to {baseCurrency} not found", $"{baseCurrency}{priceModel.Currency}");
+        if (priceCurrencyDbModel is null)
+            throw new NotFoundException(nameof(CurrencyWrapper), priceModel.Currency);
 
-        var exchangeRatePrice = priceExchangeRate.Currencies.FirstOrDefault(c => c.Code == stock.Currency);
-        var exchangeRateStock = stockCurrencyExchangeRate.Currencies.FirstOrDefault(c => c.Code == baseCurrency);
+        var exchangeRate = priceCurrencyDbModel!.Currencies.FirstOrDefault(r => r.Code == baseCurrency);
 
-        var perOneToStockCurrency = exchangeRatePrice != null ? priceModel.Price * exchangeRatePrice.Value : 0;
-        var perOneToBaseCurrency = exchangeRateStock != null ? perOneToStockCurrency * exchangeRateStock.Value : 0;
+        if (exchangeRate is null)
+            throw new NotFoundException($"{nameof(Currency)} in {nameof(CurrencyWrapper)}", $"{priceModel.Currency}{baseCurrency}");
 
-        return perOneToBaseCurrency * stock.NumberOfShares;
+        return priceModel.Price * exchangeRate!.Value * stock.NumberOfShares;
     }
 }
